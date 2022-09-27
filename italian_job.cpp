@@ -144,15 +144,11 @@ int main(void)
 
 	/* Da "fusione" verranno tutti i valori pari. */
 
-	for (int i = 0; i < fusione.size(); ++i) {
-		if (fusione[i] % 2 != 0) {
-			fusione.erase(fusione.begin() + i);
-		}
-	}
-
 	cout << "Il mio vettore e' lungo: " << fusione.size() << endl;
 	cout << "Valori di vettore fusione:";
 	for (int i = 0; i < fusione.size(); ++i) {
-		cout << " " << fusione[i];
+		if (fusione[i] % 2 == 0) {
+			cout << " " << fusione[i];
+		}
 	}
 }

@@ -1,2 +1,3 @@
-# gists
-Links to gists
+# My gists
+
+See individual files

@@ -19,8 +19,8 @@ void print_exercise_text() {
 
 void print_vector(vector<int> v) {
 	cout << endl << "Vector elements: ";
-	for (int i = 0; i < v.size(); ++i) {
-		cout << v.at(i) << " ";
+	for (int i : v) {
+		cout << i << " ";
 	}
 	cout << endl << endl;;
 }
@@ -32,6 +32,7 @@ int main(int argc, char *argv)
 	int beginning_value, middle_value, end_value;
 	const int TERMINATING_VALUE = -100;
 	vector<int> vektor;
+	vector<int>::iterator iter;
 
 	print_exercise_text();
 
@@ -48,7 +49,7 @@ int main(int argc, char *argv)
 
 	} while (entered_value != TERMINATING_VALUE);
 
-	if (vektor.size() == 0) {
+	if (vektor.empty()) {
 		cout << "User did not enter any values, program exits." << endl;
 		return 0;
 	}
@@ -61,9 +62,7 @@ int main(int argc, char *argv)
 		elements_swapped = false;
 		for (int i = 0; i < vektor.size() - 1; ++i) {
 			if (vektor.at(i) < vektor.at(i + 1)) {
-				swap_holder = vektor.at(i);
-				vektor.at(i) = vektor.at(i + 1);
-				vektor.at(i + 1) = swap_holder;
+				swap(vektor.at(i), vektor.at(i + 1));
 				elements_swapped = true;
 			}
 		}
@@ -75,9 +74,9 @@ int main(int argc, char *argv)
 
 	do {
 		value_found = false;
-		for (int i = 0; i < vektor.size(); ++i) {
-			if (vektor.at(i) % 2 == 0) {
-				vektor.erase(vektor.begin() + i);
+		for (iter = vektor.begin(); iter != vektor.end(); ++iter) {
+			if (*iter % 2 == 0) {
+				vektor.erase(iter);
 				value_found = true;
 				break;
 			}

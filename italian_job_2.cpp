@@ -71,7 +71,7 @@ int main(int argc, char *argv)
 
 	print_vector(vektor);
 
-	cout << "--- Cancel all even numbers in the vector ---" << endl;
+	cout << "--- Remove (erase) all even numbers in the vector ---" << endl;
 
 	do {
 		value_found = false;

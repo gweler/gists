@@ -16,12 +16,10 @@ TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
 HWND textbox;
 HWND button;
 
-int WINAPI WinMain(
-    HINSTANCE hThisInstance,
-    HINSTANCE hPrevInstance,
-    LPSTR lpszArgument,
-    int nCmdShow
-)
+int WINAPI WinMain(HINSTANCE hThisInstance,
+                   HINSTANCE hPrevInstance,
+                   LPSTR lpszArgument,
+                   int nCmdShow)
 {
     HWND hwnd;          /* This is the handle for our window */
     MSG messages;       /* Here messages to the application are saved */
@@ -52,20 +50,18 @@ int WINAPI WinMain(
     }
 
     /* The class is registered, let's create the program*/
-    hwnd = CreateWindowEx(
-               0,                   /* Extended possibilites for variation */
-               szClassName,         /* Classname */
-               _T("GUI example"),   /* Title Text */
-               WS_OVERLAPPEDWINDOW, /* default window */
-               CW_USEDEFAULT,       /* Windows decides the position */
-               CW_USEDEFAULT,       /* where the window ends up on the screen */
-               400,                 /* The programs width */
-               100,                 /* and height in pixels */
-               HWND_DESKTOP,        /* The window is a child-window to desktop */
-               NULL,                /* No menu */
-               hThisInstance,       /* Program Instance handler */
-               NULL                 /* No Window Creation data */
-           );
+    hwnd = CreateWindowEx(0,                   /* Extended possibilites for variation */
+                          szClassName,         /* Classname */
+                          _T("GUI example"),   /* Title Text */
+                          WS_OVERLAPPEDWINDOW, /* default window */
+                          CW_USEDEFAULT,       /* Windows decides the position */
+                          CW_USEDEFAULT,       /* where the window ends up on the screen */
+                          400,                 /* The programs width */
+                          100,                 /* and height in pixels */
+                          HWND_DESKTOP,        /* The window is a child-window to desktop */
+                          NULL,                /* No menu */
+                          hThisInstance,       /* Program Instance handler */
+                          NULL);               /* No Window Creation data */
 
     /* Make the window visible on the screen */
     ShowWindow(hwnd, nCmdShow);
@@ -103,38 +99,32 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
         break;
 
     case WM_CREATE:
-        CreateWindow(
-            "STATIC",
-            "Enter your weight:",
-            WS_VISIBLE | WS_CHILD,
-            10,
-            20,
-            150,
-            20,
-            hwnd, NULL, NULL, NULL
-        );
-
-        textbox = CreateWindow(
-                      "EDIT",
-                      "",
-                      WS_VISIBLE | WS_CHILD | WS_BORDER,
-                      150,
-                      20,
-                      100,
-                      20,
-                      hwnd, NULL, NULL, NULL
-                  );
-
-        button = CreateWindow(
-                     "BUTTON",
-                     "Enter",
-                     WS_VISIBLE | WS_CHILD | WS_BORDER,
-                     270,
+        CreateWindow("STATIC",
+                     "Enter your weight:",
+                     WS_VISIBLE | WS_CHILD,
+                     10,
                      20,
-                     60,
+                     150,
                      20,
-                     hwnd, (HMENU) 1, NULL, NULL
-                 );
+                     hwnd, NULL, NULL, NULL);
+
+        textbox = CreateWindow("EDIT",
+                               "",
+                               WS_VISIBLE | WS_CHILD | WS_BORDER,
+                               150,
+                               20,
+                               100,
+                               20,
+                               hwnd, NULL, NULL, NULL);
+
+        button = CreateWindow("BUTTON",
+                              "Enter",
+                              WS_VISIBLE | WS_CHILD | WS_BORDER,
+                              270,
+                              20,
+                              60,
+                              20,
+                              hwnd, (HMENU) 1, NULL, NULL);
         break;
 
     default:
